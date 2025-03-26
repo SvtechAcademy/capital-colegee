@@ -224,11 +224,11 @@ const SignUp = () => {
                   required
                   className="w-full p-4 border-2 border-blue-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                 >
-                  <option value="user">User</option>
+{/*                   <option value="user">User</option> */}
                   <option value="student">Student</option>
                   <option value="teacher">Teacher</option>
-                  <option value="customer">Customer</option>
-                  <option value="admin">Admin</option>
+{/*                   <option value="customer">Customer</option> */}
+{/*                   <option value="admin">Admin</option> */}
                 </select>
               </div>
             </>
