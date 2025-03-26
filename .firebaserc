@@ -1,5 +1,8 @@
 {
   "projects": {
-    "default": "capital-colege"
-  }
+    "default": "capital-colege",
+    "capital-colege": "capital-colege"
+  },
+  "targets": {},
+  "etags": {}
 }

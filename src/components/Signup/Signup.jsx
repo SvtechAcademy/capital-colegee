@@ -1,10 +1,12 @@
 import React, { useState } from "react";
-import { auth, db, googleProvider, facebookProvider } from "../../firebase/firebase-config";
+import { auth, db, googleProvider, facebookProvider } from "../firebase/firebase-config.js";
 import { createUserWithEmailAndPassword, signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
 import { doc, setDoc, getDoc } from "firebase/firestore";
-import { FaGoogle, FaFacebook, FaPhone, FaSms, FaChevronDown, FaChevronUp } from "react-icons/fa";
+import { FaGoogle, FaFacebook, FaPhone, FaSms, FaChevronDown, FaChevronUp, FaUser, FaEnvelope, FaLock, FaEye, FaEyeSlash } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
-import { motion, AnimatePresence } from "framer-motion"; // For animations
+import { motion, AnimatePresence } from "framer-motion";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({ name: "", email: "", password: "", phone: "", gender: "", role: "user" });

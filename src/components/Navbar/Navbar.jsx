@@ -15,16 +15,16 @@ const NavbarMenu = [
 
 const DegreePrograms = [
   { id: 1, title: "Nursing", description: "Become a professional nurse with our advanced nursing program.", path: "/Nursing" },
-  { id: 2, title: "Medical Laboratory", description: "Learn the latest techniques in medical laboratory science.", path: "/dashboard/medical-lab" },
-  { id: 3, title: "Information Technology", description: "Master IT skills for the digital age.", path: "/it" },
+  { id: 2, title: "Medical Laboratory", description: "Learn the latest techniques in medical laboratory science.", path: "/medicallab" },
+  { id: 3, title: "Information Technology", description: "Master IT skills for the digital age.", path: "/It" },
   { id: 4, title: "Management", description: "Develop leadership and management expertise.", path: "/management" },
   { id: 5, title: "Accounting and Finance", description: "Grow your career in accounting and finance.", path: "/accounting" },
 ];
 
 const TVETPrograms = [
-  { id: 1, title: "Level IV Nurse", description: "Advanced training for nursing professionals.", path: "/dashboard/level-iv-nurse" },
-  { id: 2, title: "Level IV Pharmacy", description: "Specialized training in pharmaceutical sciences.", path: "/dashboard/level-iv-pharmacy" },
-  { id: 3, title: "Level IV Medical Lab", description: "Hands-on training in medical laboratory techniques.", path: "/dashboard/level-iv-medical-lab" },
+  { id: 1, title: "Level IV Nurse", description: "Advanced training for nursing professionals.", path: "/Nursingn" },
+  { id: 2, title: "Level IV Pharmacy", description: "Specialized training in pharmaceutical sciences.", path: "/pharmacy" },
+  { id: 3, title: "Level IV Medical Lab", description: "Hands-on training in medical laboratory techniques.", path: "/medicallab" },
 ];
 
 // Navbar Component

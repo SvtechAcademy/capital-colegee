@@ -1,7 +1,6 @@
 import React, { useState } from "react";
-import { IoIosArrowRoundForward, IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { IoIosArrowRoundForward, IoIosArrowBack, IoIosArrowForward, IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
 import { motion } from "framer-motion";
-import { FaGithub, FaTelegram, FaYoutube, FaTiktok } from "react-icons/fa";
 import { IoCall, IoChatbubblesSharp } from "react-icons/io5";
 
 // Animation Variant
@@ -14,35 +13,55 @@ export const FadeUp = (delay) => ({
   },
 });
 
-// Hero Sections Data (Image + Video)
-const heroSections = [
+// Programs Data with Images, Videos, and Background Colors
+const programsData = [
   {
     id: 1,
-    title: "Welcome",
-    subtitle: "Capital College of Business and Health Science",
+    title: " College of Business and Health Science",
+    description: "Empower Your Future in Business and Health Science.",
     type: "image",
-    src: "/assets/herro1.jpg", // ✅ Correct path
+    src: "/assets/staf.png",
+    bgColor: "bg-blue-900",
   },
   {
     id: 2,
-    title: "Empower Your Future in",
-    subtitle: "Business and Health Science",
+    title: "College of Business and Health Science",
+    description: "Become a professional nurse with our advanced nursing program.",
     type: "video",
-    src: "/assets/video11.mp4", // ✅ Correct path
+    src: "/assets/Nursing skill lab.mp4",
+    bgColor: "bg-blue-900",
   },
   {
     id: 3,
-    title: "Learn, Grow, and Succeed with",
-    subtitle: "Accounting High Education Programs",
-    type: "image",
-    src: "/assets/acconting.png", // ✅ Correct path
+    title: "College of Business and Health Science",
+    description: "Learn the latest techniques in medical laboratory science.",
+    type: "video",
+    src: "/assets/medical setup.mp4",
+    bgColor: "bg-green-900",
   },
   {
     id: 4,
-    title: "Get Hands-On Training in",
-    subtitle: "Our Advanced Labs and Facilities",
+    title: "College of Business and Health Science",
+    description: "Develop leadership and management expertise.",
     type: "image",
-    src: "/assets/studen.jpg", // ✅ Correct path
+    src: "/assets/herro1.jpg",
+    bgColor: "bg-purple-900",
+  },
+  {
+    id: 5,
+    title: "College of Business and Health Science",
+    description: "Information Technolog  skills for the digital age.",
+    type: "video",
+    src: "/assets/IT Lab.mp4",
+    bgColor: "bg-orange-900",
+  },
+  {
+    id: 6,
+    title: "College of Business and Health Science",
+    description: "Grow your career in accounting and finance.",
+    type: "image",
+    src: "/assets/Oaccontin.jpg",
+    bgColor: "bg-red-900",
   },
 ];
 
@@ -85,77 +104,299 @@ const postSection = [
     title: "Our Latest Achievements",
     subtitle: "Witness the success we've achieved in different fields",
     type: "image",
-    src: "/assets/hero1.jpeg", // ✅ Correct path
+    src: "/assets/hero1.jpeg",
   },
   {
     id: 2,
     title: "Take a Tour of Our Campus",
     subtitle: "Explore the vibrant atmosphere and advanced facilities",
     type: "video",
-    src: "/assets/video11.mp4", // ✅ Correct path
+    src: "/assets/video11.mp4",
   },
 ];
 
+const sectionsAbove = [
+  {
+    id: 1,
+    title: " The Accounting & Finance High Education Programs is avilable for you.",
+    description: "Discover why we are the best choice for your education.",
+    type: "video",
+    src: "/assets/video11.mp4",
+    bgImage: "bg-[url('/assets/acou.jpg')] bg-cover bg-center",
+  },
+  {
+    id: 2,
+    title: "The information Technology High Education Programs is avilable for you",
+    description: "We are committed to providing quality education and training.",
+    bgColor: "bg-green-950",
+    bgImage: "bg-[url('/assets/herocon.png')] bg-cover bg-center",
+  },
+  {
+    id: 3,
+    title: " The Medical Laboratory & Nursing High Education Programs is avilable for you",
+    description: "To be a leading institution in education and innovation.",
+    bgColor: "bg-purple-950",
+    bgImage: "bg-[url('/assets/herro8.png')] bg-cover bg-center",
+  },
+  {
+    id: 4,
+    title: " The Management High Education Programs is avilable for you",
+    description: "To be a leading institution in education and innovation.",
+    bgColor: "bg-purple-950",
+    bgImage: "bg-[url('/assets/herro1.jpg')] bg-cover bg-center",
+  },
+];
+
+const sectionsBelow = [
+  {
+    id: 1,
+    title: "Student Success Stories",
+    description: "Hear from our students about their journey and achievements.",
+    bgColor: "bg-orange-950",
+    bgImage: "bg-[url('/assets/studen.jpg')] bg-cover bg-center",
+  },
+  
+];
+
+// Stats Data
+const statsData = [
+  {
+    id: 1,
+    title: "Current Students",
+    value: "5,000+",
+    description: "Enrolled in various programs.",
+    icon: "👩‍🎓",
+  },
+  {
+    id: 2,
+    title: "Available Programs",
+    value: "50+",
+    description: "Degree and TVET programs.",
+    icon: "📚",
+  },
+  {
+    id: 3,
+    title: "Satisfaction Rate",
+    value: "95%",
+    description: "Student satisfaction rate.",
+    icon: "😊",
+  },
+  {
+    id: 4,
+    title: "Graduation Rate",
+    value: "90%",
+    description: "Successful graduates each year.",
+    icon: "🎓",
+  },
+  {
+    id: 5,
+    title: "Faculty Members",
+    value: "300+",
+    description: "Experienced and qualified staff.",
+    icon: "👨‍🏫",
+  },
+  {
+    id: 6,
+    title: "Alumni Network",
+    value: "20,000+",
+    description: "Strong global alumni community.",
+    icon: "🌍",
+  },
+];
+
+// Explore Programs Component
+const ExplorePrograms = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const handleNext = () => {
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % programsData.length);
+  };
+
+  const handlePrevious = () => {
+    setCurrentIndex((prevIndex) =>
+      prevIndex === 0 ? programsData.length - 1 : prevIndex - 1
+    );
+  };
+
+  const currentProgram = programsData[currentIndex];
+
+  return (
+    <section
+      className={`relative w-full h-screen flex items-center justify-center text-white overflow-hidden ${currentProgram.bgColor}`}
+    >
+      {currentProgram.type === "image" ? (
+        <img
+          src={currentProgram.src}
+          alt={currentProgram.title}
+          className="absolute top-0 left-0 w-full h-full object-cover brightness-75"
+        />
+      ) : (
+        <video
+          src={currentProgram.src}
+          autoPlay
+          loop
+          muted
+          className="absolute top-0 left-0 w-full h-full object-cover brightness-75"
+        />
+      )}
+
+      <div className="relative z-10 text-center max-w-4xl px-4">
+        <motion.h1
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="text-4xl md:text-6xl font-bold text-white mb-4"
+        >
+         Well Come to Capital
+        </motion.h1>
+        <motion.h2
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="text-2xl md:text-4xl font-semibold text-yellow-400 mb-8"
+        >
+          {currentProgram.title}
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-lg md:text-xl text-white mb-8"
+        >
+          {currentProgram.description}
+        </motion.p>
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.6 }}
+          className="mt-6"
+        >
+          <a
+            href="./Signup"
+            className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105"
+          >
+            Apply now
+            <IoIosArrowRoundForward className="text-xl group-hover:translate-x-2 transition-transform duration-300" />
+          </a>
+        </motion.div>
+      </div>
+
+      <button
+        onClick={handlePrevious}
+        className="absolute left-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 p-4 rounded-full hover:bg-opacity-30 transition-all duration-300"
+      >
+        <IoIosArrowBack className="text-2xl text-white" />
+      </button>
+      <button
+        onClick={handleNext}
+        className="absolute right-4 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-20 p-4 rounded-full hover:bg-opacity-30 transition-all duration-300"
+      >
+        <IoIosArrowForward className="text-2xl text-white" />
+      </button>
+
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2">
+        {programsData.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${
+              currentIndex === index ? "bg-yellow-400" : "bg-white bg-opacity-50"
+            }`}
+          />
+        ))}
+      </div>
+    </section>
+  );
+};
+
+// Section Component
+const Section = ({ title, description, bgColor, bgImage, delay }) => (
+  <motion.section
+    initial={{ opacity: 0, y: 50 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, delay }}
+    viewport={{ once: true }}
+    className={`${bgColor} ${bgImage} text-white py-20 h-screen flex items-center justify-center`}
+  >
+    <div className="container mx-auto px-4 text-center">
+      <h2 className="text-4xl md:text-5xl font-bold mb-6">{title}</h2>
+      
+      <p className="text-lg md:text-xl">{description}</p>
+      <a
+            href="./Accounting"
+            className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105"
+          >
+            Apply now
+            <IoIosArrowRoundForward className="text-xl group-hover:translate-x-2 transition-transform duration-300" />
+          </a>
+    </div>
+  </motion.section>
+);
+
+// Stats Section Component
+const StatsSection = () => {
+  return (
+    <section className="bg-gradient-to-r from-blue-950 to-sky-950 text-white py-16">
+      <div className="container mx-auto px-4">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-8">
+          College Statistics
+        </h2>
+        <div className="overflow-x-auto scrollbar-hide">
+          <div className="flex gap-6 pb-6">
+            {statsData.map((stat) => (
+              <motion.div
+                key={stat.id}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: stat.id * 0.1 }}
+                viewport={{ once: true }}
+                className="min-w-[250px] bg-white bg-opacity-10 p-6 rounded-lg shadow-lg flex flex-col items-center text-center hover:scale-105 transition-transform duration-300"
+              >
+                <span className="text-4xl mb-4">{stat.icon}</span>
+                <h3 className="text-2xl font-bold">{stat.value}</h3>
+                <p className="text-lg font-semibold mt-2">{stat.title}</p>
+                <p className="text-sm text-gray-300 mt-2">{stat.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// Footer Component
+const Footer = () => {
+  return (
+    <footer className="bg-gray-900 text-white py-8">
+      <div className="container mx-auto px-4 text-center">
+        
+        
+      </div>
+    </footer>
+  );
+};
+
+// Hero Component
 const Hero = () => {
   const [openDegree, setOpenDegree] = useState(false);
   const [openTVET, setOpenTVET] = useState(false);
 
   return (
     <section className="bg-gradient-to-r from-blue-950 to-sky-950 text-white overflow-hidden relative font-sans">
-      {/* Hero Sections */}
-      {heroSections.map((section, index) => (
-        <motion.div
-          key={section.id}
-          className="relative w-full h-screen flex items-center justify-center"
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: index * 0.2 }}
-          viewport={{ once: true }}
-        >
-          {/* Background (Image or Video) */}
-          {section.type === "image" ? (
-            <img
-              src={section.src}
-              alt="/assets/hero6.jpg"
-              className="absolute top-0 left-0 w-full h-full object-cover brightness-75"
-            />
-          ) : (
-            <video
-              src={section.src}
-              autoPlay
-              loop
-              muted
-              className="absolute top-0 left-0 w-full h-full object-cover brightness-75"
-            />
-          )}
+      {/* Explore Our Programs Section */}
+      <ExplorePrograms />
 
-          {/* Content */}
-          <div className="relative z-10 text-center max-w-4xl px-4">
-            <motion.h1
-              variants={FadeUp(0.6)}
-              initial="initial"
-              whileInView="animate"
-              className="text-4xl md:text-6xl font-bold text-white mb-4"
-            >
-              {section.title}{" "}
-              <span className="text-yellow-400">{section.subtitle}</span>
-            </motion.h1>
-            <motion.div
-              variants={FadeUp(0.8)}
-              initial="initial"
-              whileInView="animate"
-              className="mt-6"
-            >
-              <a
-                href="./Signup"
-                className="inline-flex items-center gap-2 bg-yellow-500 hover:bg-yellow-600 text-black font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105"
-              >
-                Apply now
-                <IoIosArrowRoundForward className="text-xl group-hover:translate-x-2 transition-transform duration-300" />
-              </a>
-            </motion.div>
-          </div>
-        </motion.div>
+      {/* Sections Above "Our Programs" */}
+      {sectionsAbove.map((section, index) => (
+        <Section
+          key={section.id}
+          title={section.title}
+          description={section.description}
+          bgColor={section.bgColor}
+          bgImage={section.bgImage}
+          delay={index * 0.2}
+        />
       ))}
 
       {/* Full-Screen Programs Section */}
@@ -276,6 +517,18 @@ const Hero = () => {
         </div>
       </div>
 
+      {/* Sections Below "Our Programs" */}
+      {sectionsBelow.map((section, index) => (
+        <Section
+          key={section.id}
+          title={section.title}
+          description={section.description}
+          bgColor={section.bgColor}
+          bgImage={section.bgImage}
+          delay={index * 0.2}
+        />
+      ))}
+
       {/* Post Section (New Section with Image/Video) */}
       <div className="container mx-auto py-16 px-4">
         <h2 className="text-3xl text-center font-bold mb-10 text-white">Latest Updates</h2>
@@ -313,6 +566,12 @@ const Hero = () => {
           ))}
         </div>
       </div>
+
+      {/* Stats Section */}
+      <StatsSection />
+
+      {/* Footer */}
+      <Footer />
     </section>
   );
 };

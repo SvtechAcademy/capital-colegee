@@ -16,6 +16,11 @@ import PhotoEdit from "./components/PhotoEdit/PhotoEdit";
 import Grammar from "./components/Grammar/Grammar";
 import AdminPanel from "./components/AdminPanel/AdminPanel";
 import UserDashboard from "./components/UserDashboard/UserDashboard";
+import Medicallab from "./components/Medicallab/Medicallab";
+import It from "./components/It/It";
+import Nursingn from "./components/Nursingn/Nursingn";
+import Pharmacy from "./components/Pharmacy/Pharmacy"; // Import Pharmasy
+import Medicallablev from "./components/Medicallablev/Medicallablev";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute"; // Import the ProtectedRoute
 
 function App() {
@@ -39,6 +44,11 @@ function App() {
           <Route path="/PhotoEdit" element={<PhotoEdit />} />
           <Route path="/Grammar" element={<Grammar />} />
           <Route path="/UserDashboard" element={<UserDashboard />} />
+          <Route path="/Medicallab" element={<Medicallab />} />
+          <Route path="/It" element={<It />} />
+          <Route path="/Nursingn" element={<Nursingn />} />
+          <Route path="/Pharmacy" element={<Pharmacy />} />
+          <Route path="/Medicallablev" element={<Medicallablev />} />
 
           {/* Protected AdminPanel route */}
           <Route
